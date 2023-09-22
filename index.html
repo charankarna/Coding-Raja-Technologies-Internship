@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" id="cv-form">
+        <h1 class="text-center my-4">Resume builder</h1>
+        <p class="text-center">By karna creation</p>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Personal Information</h3>
+                <div class="form-group">
+                    <label for="nameField">Your Name</label>
+                    <input type="text" id="nameField" placeholder="Enter here" class="form-control">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="contactField">Your Contact</label>
+                    <input type="text" id="contactField" placeholder="Enter here" class="form-control">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="addressField">Your Address</label>
+                    <textarea id="addressField" placeholder="Enter here" class="form-control"></textarea>
+                </div>
+
+
+                <h5 class="my-3">Important Links</h5>
+                <div class="form-group mt-3">
+                    <label for="fbField">Facebook Link</label>
+                    <input type="text" id="fbField" placeholder="Enter here" class="form-control">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="certiField">Instagram Link</label>
+                    <input type="text" id="instaField" placeholder="Enter here" class="form-control">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="linkedField">LinkedIn Link</label>
+                    <input type="text" id="linkedField" placeholder="Enter here" class="form-control">
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <h3>Professional Information</h3>
+                <div class="form-group mt-auto">
+                    <label for="">Objective</label>
+                    <textarea placeholder="Text here" id="objectiveField" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group mt-3" id="we">
+                    <label for="">Work Experience</label>
+                    <textarea placeholder="Text here" class="form-control weField" rows="5"></textarea>
+
+
+                    <div class="container text-center my-2" id="weAddButton">
+                        <button onclick="addNewEField()"
+                            class="btn btn-primary btn-sm bg-gradient border-bottom border-end">Add</button>
+                    </div>
+                </div>
+                <div class="form-group mt-3" id="aq">
+                    <label for="">Academic Qualification</label>
+                    <textarea placeholder="Text here" class="form-control eqField" rows="5"></textarea>
+
+
+                    <div class="container text-center my-2" id="aqAddButton">
+                        <button onclick="addNewaQField()"
+                            class="btn btn-primary btn-sm border-bottom border-end">Add</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="container text-center my-3">
+            <button onclick="generateCV()" class="btn btn-primary btn-lg border-bottom border-end">Generate CV</button>
+        </div>
+    </div>
+
+    <div class="container" id="cv-template">
+        <div class="row">
+            <div class="col-md-4 text-center py-5 background ">
+                <!--first col-->
+                <img src="data:image/jpeg;base64,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"
+                    alt="" class="img-fluid my-img">
+                <div class="container">
+                    <p id="nameT1">charan karna</p>
+                    <p id="contactT">+91-7795030376</p>
+                    <p id="addressT">gusqygwdyuqwgyf</p>
+                    <hr>
+                    <p><a id="fbT" href="#1">https://www.facebook.com/charankarna</a></p>
+                    <p><a id="instaT" href="#1">https://www.instagram.com/charankarna</a></p>
+                    <p><a id="linkedT" href="#1">https://www.linkedIn.com/charankarna</a></p>
+                </div>
+            </div>
+            <!--objective-->
+            <div class="col-md-8 py-5">
+                <!--second col-->
+                <h1 id="nameT2" class="text-center my-3" style="font-weight: 980;">charankarna</h1>
+                <div class="card mt-4">
+                    <div class="card-header background">
+                        <h3>Objective</h3>
+                    </div>
+                    <div class="card-body">
+                       <p id="objectiveT"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur natus soluta eius blanditiis
+                        temporibus error recusandae nulla necessitatibus consequatur, aspernatur numquam commodi ratione
+                        minus? Sequi qui provident at odit necessitatibus!
+                    </p>
+                    </div>
+                </div>
+                <!--work experience-->
+                <div class="card mt-4">
+                    <div class="card-header background">
+                        <h3>Work Experience</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul id="weT">
+                            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ullam?</li>
+                        
+                            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ullam?</li>
+                        
+                            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ullam?</li>
+                        </ul>
+                    </div>
+                </div>
+                <!--academic qualification-->
+                <div class="card mt-4">
+                    <div class="card-header background">
+                        <h3>Academic Qualification</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul id="aqT">
+                            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ullam?</li>
+                       
+                            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ullam?</li>
+                        
+                            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi, ullam?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container mt-3 text-center">
+                    <button onclick="printCV()" class="btn background">Print CV</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
