@@ -1,0 +1,16 @@
+body{
+    background-image: linear-gradient(120deg,#bc7d08,#917720);
+}
+
+#cv-template{
+    display: none;
+}
+
+.my-img{
+   border-radius: 50%; 
+   width: 200px;  
+}
+
+.background{
+    background-color: moccasin;
+}
